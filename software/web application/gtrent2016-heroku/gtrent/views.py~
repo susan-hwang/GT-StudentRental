@@ -1,0 +1,16 @@
+from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import loader
+from .models import *
+
+def index(request):
+	template = loader.get_template('gtrent/index.html')
+	if request.method = 'GET':
+		id = requset.ID
+		return HttpResponse("!!!")
+	return render(request, 'gtrent/index.html')
+
+    
+   
+
+# Create your views here.

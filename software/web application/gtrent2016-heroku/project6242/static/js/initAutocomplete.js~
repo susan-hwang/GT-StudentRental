@@ -1,0 +1,297 @@
+// This example adds a search box to a map, using the Google Place Autocomplete
+// feature. People can enter geographical searches. The search box will return a
+// pick list containing a mix of places and predicted search terms.
+
+// This example requires the Places library. Include the libraries=places
+// parameter when you first load the API. For example:
+// <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+var map;
+var markers=[];
+var queryResult=[];
+var mapCenter;
+var mapZoom=12;
+var testQueryRes=[{"commutingStyle":"driving","commutingTime":"20min","name":"Walton River","address":"2550 Akers Mill Rd SE","lat":33.778016,"lon":-84.399205,"webSite": "www.www.com","zipCode":"30339","floorPlans":[{ "bed":1,"bath":1.0,"price":950,"sqft":800},{ "bed":1,"bath":1.0,"price":1000,"sqft":900 }],"propertyType":"Apartment","crimeScore":90,"foodScore":90,"gasScore":90,"entertainmentScore":90}];
+function initAutocomplete() {
+  var myLatlng = new google.maps.LatLng(33.778016, -84.399205);
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: myLatlng,
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    //scrollwheel: false,
+    //scaleControl: false,
+    disableDoubleClickZoom: true,
+    styles: [{"featureType":"administrative.land_parcel","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"landscape.man_made","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road","elementType":"labels","stylers":[{"visibility":"simplified"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"hue":"#f49935"}]},{"featureType":"road.highway","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"hue":"#fad959"}]},{"featureType":"road.arterial","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"road.local","elementType":"labels","stylers":[{"visibility":"simplified"}]},{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},{"featureType":"water","elementType":"all","stylers":[{"hue":"#a1cdfc"},{"saturation":30},{"lightness":49}]}]
+
+  });
+
+  // Create the search box and link it to the UI element.
+  var input = document.getElementById('pac-input');
+  var searchBox = new google.maps.places.SearchBox(input);
+  // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+  // Bias the SearchBox results towards current map's viewport.
+  map.addListener('bounds_changed', function() {
+    searchBox.setBounds(map.getBounds());
+  });
+
+  // Listen for the event fired when the user selects a prediction and retrieve
+  // more details for that place.
+  searchBox.addListener('places_changed', function() {
+    var places = searchBox.getPlaces();
+
+    if (places.length == 0) {
+      return;
+    }
+
+    // Clear out the old markers.
+    markers.forEach(function(marker) {
+      marker.setMap(null);
+    });
+    markers = [];
+
+    // For each place, get the icon, name and location.
+    var bounds = new google.maps.LatLngBounds();
+    places.forEach(function(place) {
+      var icon = {
+        url: place.icon,
+        size: new google.maps.Size(71, 71),
+        origin: new google.maps.Point(0, 0),
+        anchor: new google.maps.Point(17, 34),
+        scaledSize: new google.maps.Size(25, 25)
+      };
+
+      // Create a marker for each place.
+      markers.push(new google.maps.Marker({
+        map: map,
+        icon: icon,
+        title: place.name,
+        position: place.geometry.location
+      }));
+
+      if (place.geometry.viewport) {
+        // Only geocodes have viewport.
+        bounds.union(place.geometry.viewport);
+      } else {
+        bounds.extend(place.geometry.location);
+      }
+    });
+    map.fitBounds(bounds);
+  });
+}
+function setMapOnAll(map) {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(map);
+  }
+}
+function clearMarker(){
+  setMapOnAll(null);
+  markers=[];
+}
+var getFilters = function(){
+    var commutingStyle = "Driving"; // "Driving is the first tab by default"
+    // $("#commutingWay img").click(function(){
+    //  if (! $(this).hasClass("choosed")){
+    //    $("#commutingWay").children().removeClass("choosed");
+    //    $(this).addClass("choosed");
+    //    commutingStyle = ($(this).attr("id"));
+    //  }
+    // })
+    var commutingTime = new Array([$("#sliderMin").text(), $("#sliderMax").text()])
+    // alert(commutingTime);
+
+    $("#bed-show").text($("#bed").val())
+    $("#bath-show").text($("#bath").val())
+    var floorPlan = new Array([$("#bed").val(), $("#bath").val()])
+    // alert(floorPlan);
+
+    $("#priceMin-show").text($("#rental-payment-min").val());
+    $("#priceMax-show").text($("#rental-payment-max").val());
+    var priceRange = new Array([$("#rental-payment-min").val(), $("#rental-payment-max").val()])
+    // alert(priceRange);
+
+    var types = new Array()
+    if ($("#Apartment").is(':checked')){
+      types.push("Apartment");
+    }
+    if ($("#House").is(':checked')){
+      types.push("House");
+    }
+    if ($("#Condo").is(':checked')){
+      types.push("Condo");
+    }
+    if ($("#Townhouse").is(':checked')){
+      types.push("Townhouse");
+    }
+    $("#propertyType-show").text(types[0] + " " + types[1] + " " + types[2] + " " + types[3]);
+    var propertyType = types;
+    // alert(propertyType);
+
+    var life = new Array()
+    if ($("#Food").is(':checked')){
+      life.push("Food");
+    }
+    if ($("#Gas").is(':checked')){
+      life.push("Gas");
+    }
+    if ($("#Entertainment").is(':checked')){
+      life.push("Entertainment");
+    }
+    $('#lifeConvenience-show').text(life[0] + " " + life[1] + " " + life[2] + " " + life[3]);
+    var lifeCon = life;
+    // alert(lifeCon);
+
+    return filter //filter is a json var
+  }
+
+  var addContent = function(dataArray){
+    var latsum=0;
+    var lonsum=0;
+    dataArray.forEach(function(data,index){
+      latsum=latsum+data["lat"];
+      lonsum=lonsum+data["lon"];
+      console.log(data);
+      var location  = new google.maps.LatLng(data["lat"],data["lon"]);
+      markers.push( new google.maps.Marker({
+        position: location, 
+        animation: google.maps.Animation.DROP
+      }));
+      var id="content-"+(index+1).toString();
+      var thisArticle = $('<article>').attr("id",id);
+      var name = $('<h3>').text(data["name"]);
+      var address = $('<p>').text(data["address"]+", "+data["zipCode"]);
+      var priceTable=$("<table>");
+      data["floorPlans"].forEach(function(plan){
+        var list = $("<tr>");
+        $('<th>').text(plan["bed"]+" Bedrooms").appendTo(list);
+        $('<th>').text(plan["bath"]+" Bath").appendTo(list);
+        $('<th>').text("$"+plan["price"].toString()).appendTo(list);
+        $('<th>').text(plan["sqft"].toString()+" Sqft").appendTo(list);
+        list.appendTo(priceTable);
+      })
+      priceTable.appendTo(thisArticle);
+      var link = $("<a>").text("Listing on Zillow.com");
+      link.attr("herf",data["webSite"]);
+      var website = $("<p>").append(link);
+      thisArticle.append(website);
+      thisArticle.prepend(address);
+      thisArticle.prepend(name);
+      $('#content').append(thisArticle);
+    })
+    mapCenter = new google.maps.LatLng(latsum/dataArray.length,lonsum/dataArray.length);
+  }
+
+  var searchForDetail = function(filter){ //The input is a json file
+    console.log("create post is working!") // sanity check
+      $.ajax({
+          url : "gtrent", // the endpoint
+          type : "GET", // http method
+          data : filter, // data sent with the post request
+
+          // handle a successful response
+          success : function(json) {
+              //$('#post-text').val(''); // remove the value from the input
+              console.log(json); // log the returned json to the console
+              console.log("success"); // another sanity check
+              return ;
+          },
+          // handle a non-successful response
+          error : function(xhr,errmsg,err) {
+              //$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+              //    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+              console.log("failed"); // provide a bit more info about the error to the console
+        }
+    });
+  }
+  var hideContent=function(){
+
+    $("#content").animate({
+      height:'20px',
+      opacity: 1,
+    },500)
+    //$("#content").css({"overflow":"hidden"});
+    $('#content').addClass('hidden2');
+  }
+
+  var showContent = function(){
+    $("#content").animate({
+          height:'500px',
+          width:"300px",
+          opacity: 1,
+        },800)
+    //$("#content").css({"overflow":"scroll"});
+    $("#content").removeClass('hidden2')
+  }
+
+$("#hideContent").click(function(){
+      if (! $("#content").hasClass('hidden2')){
+        hideContent()
+      }
+      else{
+        showContent();
+      }
+    });
+
+$('#apply').click(function(){
+  if ($('#content').hasClass('hidden2')){
+    showContent();
+  }
+  $("#filter").animate({
+      width:'0px',
+      opacity: 0,
+      
+  },800)
+  $("#filterTag img").removeClass('clicked')
+
+  //queryResult = searchForDetail(getFilters());
+  clearMarker();
+  $("#content").children("article").remove();
+
+  addContent(testQueryRes);
+  setMapOnAll(map);
+  map.setCenter(mapCenter);
+})
+
+
+
+
+//Sample filter variable sent to Django:
+//{"commutingStyle":"driving",
+//  "bed":1,
+//  "bath":1.0,
+//  "priceMin":0,
+//  "priceMax":1000,
+//  "Apartment":True,
+//  "House":False,
+//  "Condo":False,
+//  "Townhouse":False,
+//  "Food":True,
+//  "Gas":False,
+//  "Entertainment":True}
+
+
+//Sample data variable return from Django:
+//{"commutingStyle":"driving",
+// "commutingTime":"20min",
+// "name":"Walton River",
+// "address":"2550 Akers Mill Rd SE",
+// "lat":30.0000,
+// "lon":-80.0000,
+// "webSite": "www.www.com",
+// "zipCode":"30339",
+// "floorPlans":[
+//  { "bed":1,
+//    "bath":1.0,
+//    "price":950,
+//    "sqft":800,  
+//  },
+//  { "bed":1,
+//    "bath":1.0,
+//    "price":1000,
+//    "sqft":900,  
+//  }
+//  ]
+//  "propertyType":"Apartment",
+//  "crimeScore":90
+//  "foodScore":90,
+//  "gasScore":90,
+//  "entertainmentScore":90}

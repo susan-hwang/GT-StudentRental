@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>GTrent</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Template by FREEHTML5.CO" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FREEHTML5.CO" />
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<!--<link rel="shortcut icon" href="favicon.ico">-->
+
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Simple Line Icons -->
+	<link rel="stylesheet" href="css/simple-line-icons.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Owl Carousel  -->
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/owl.theme.default.min.css">
+	<!-- Style -->
+	<link rel="stylesheet" href="css/style.css">
+	<!--<link rel="stylesheet" href="css/searchbox.css">
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!--d3.js-->
+	<link rel="stylesheet" href="./lib/d3/d3.slider.css" />
+	<script type="text/javascript" src="./lib/d3/d3.v3.min.js"></script>
+	<script src="./lib/d3/d3.slider.js"></script>
+	<!-- Icon -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+	</head>
+	<body>
+	<header role="banner" id="fh5co-header">
+		<div class="fluid-container">
+			<nav class="navbar navbar-default">
+				<div class="navbar-header">
+					<!-- Mobile Toggle Menu Button -->
+					<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+					<a class="navbar-brand" href="index.html"><span>GT</span>rent</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="#" data-nav-section="home"><span>Home</span></a></li>
+						<li><a href="#" data-nav-section="explore"><span>Explore</span></a></li>
+						<li><a href="#" data-nav-section="services"><span>Services</span></a></li>
+						<li><a href="#" data-nav-section="team"><span>Team</span></a></li>
+						<li><a href="#" data-nav-section="faq"><span>FAQ</span></a></li>
+						<!--
+						<li class="call-to-action"><a href="#"><span>Sign up free</span></a></li>
+					-->
+					</ul>
+				</div>
+			</nav>
+	  </div>
+	</header>
+
+	<section id="fh5co-home" data-section="home" style="background-image: url(images/b260.jpg);" data-stellar-background-ratio="0.5">
+		<div class="gradient"></div>
+		<div class="container">
+			<div class="text-wrap">
+				<div class="text-inner">
+					<div class="row">
+						<div class="col-md-12">
+							<h1 class="to-animate">We are here for you!</h1>
+							<h1 class="to-animate"> Yellow Jacket!</h1>
+							<!-- Home page search box -->
+							<div style="solid #ccc; background-color: transparent; padding:0px;">
+							<input id="pac-input" class="controls" type="text" placeholder="Enter your future home address">
+<!-- 							<input class="button" type="submit" value="find" onClick="initAutocomplete.js">
+ -->							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="fh5co-explore" data-section="explore">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 section-heading text-center">
+					<h2 class="to-animate">Explore Your Dream Home</h2>
+					<h3></h3>
+					<div class="row" id="exploreContent">
+						<div id="content" class="hidden2">
+							<div id = "topBar" style="width:100%;height:20px;border-bottom: 1px solid lightgrey;"><img id="hideContent" title = "Hide/Show" data-toggle="tooltip" src="./images/hideUp.png" data-placement="right" style="height:20px;vertical-align:top;"></div>
+							<!--
+							<article id="content-1">
+								<h3>Walton River</h3>
+								<p>2550 Akers Mill Rd SE, 30339, GA</p>
+								<table>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1300</th><th>1000 Sqft</th></tr>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1500</th><th>1200 Sqft</th></tr>
+								</table>
+								<p><a href="http://www.zillow.com">Listing on Zillow.com</a></p>
+							</article>
+							<article id="content-2">
+								<h3>Walton River</h3>
+								<p>2550 Akers Mill Rd SE</p>
+								<table>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1300</th><th>1000 Sqft</th></tr>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1500</th><th>1200 Sqft</th></tr>
+								</table>
+							</article>
+							<article id="content-3">
+								<h3>Walton River</h3>
+								<p>2550 Akers Mill Rd SE</p>
+								<table>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1300</th><th>1000 Sqft</th></tr>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1500</th><th>1200 Sqft</th></tr>
+								</table>
+							</article>
+							<article id="content-4">
+								<h3>Walton River</h3>
+								<p>2550 Akers Mill Rd SE</p>
+								<table>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1300</th><th>1000 Sqft</th></tr>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1500</th><th>1200 Sqft</th></tr>
+								</table>
+							</article>
+							<article id="content-5">
+								<h3>Walton River</h3>
+								<p>2550 Akers Mill Rd SE</p>
+								<table>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1300</th><th>1000 Sqft</th></tr>
+									<tr><th>2 Bedrooms</th><th>2.0 Bath</th><th>$1500</th><th>1200 Sqft</th></tr>
+								</table>
+							</article>
+						-->
+						</div>
+						<div id="filter" >
+							<div id="commutingWay"class="selectCommute">
+								<img id="Driving" title="Driving" data-toggle="tooltip" class="choosed" data-placement="right"src="./images/car.png">
+								<img id="Walking" title="Walking"data-toggle="tooltip" data-placement="left"src="./images/walk.png">
+								<img id="Transit" title="Transit"data-toggle="tooltip" data-placement="left" src="./images/transit.png">
+							</div>
+							<div id="commutingTime" class="selectContainer">
+								<div title = "Time it takes to commute" data-toggle="tooltip"class="selectHeader"><h3>Commuting Time</h3> <p><span id="sliderMin">0</span>- <span id="sliderMax">100</span> minutes</p></div>
+								<div class="selectDetail"><div id="sliderTime"></div></div>
+							</div>
+							<div id="floorPlan" class="selectContainer">
+								<div title = "How many beds do you want?" data-toggle="tooltip"  class="selectHeader"><h3>Floor Plan</h3> <p><span id="bed-show">1</span> b <span id="bath-show">1.0</span> b</p></div>
+								<div class="selectDetail">
+									<select id = "bed">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+										<option>5</option>
+										<option>6</option>
+									</select>
+									<span>Beds</span>
+									<select id = "bath">
+										<option>1.0</option>
+										<option>1.5</option>
+										<option>2.0</option>
+										<option>2.5</option>
+										<option>3.0</option>
+										<option>3.5</option>
+										<option>4.0</option>
+										<option>4.5</option>
+										<option>5.0</option>
+										<option>5.5</option>
+										<option>6.0</option>
+										<option>7.5</option>
+									</select>
+									<span>Baths</span>
+								</div>
+							</div>
+							<div id="priceRange" class="selectContainer">
+								<div title = "Average price for a bed" data-toggle="tooltip"class="selectHeader"><h3>Range of Price</h3> <p>$<span id="priceMin-show">0</span> - $<span id="priceMax-show">1000</span></p></div>
+								<div class="selectDetail">
+									<span>Min</span>
+									<div class="priceBox" id="priceBoxMin"><input class="text commaFormat" maxlength="5" size="4" name="rental-payment-min" id="rental-payment-min" type="text" value="0" placeholder="0"></div>
+									<span>Max</span>
+									<div class="priceBox" id="priceBoxMax"><input class="text commaFormat" maxlength="5" size="4" name="rental-payment-max" id="rental-payment-max" type="text" value="1000" placeholder="1000"></div>
+								</div>
+
+							</div>
+							<div id="propertyType" class="selectContainer">
+								<div title = "Apartment,house,or else?" data-toggle="tooltip" id="typeHeader" class="selectHeader"><h3>Property Type</h3>
+								<p id="propertyType-show">Apartment,House,Condo,Townhouse</p>
+								</div>
+								<div class="selectDetail">
+									<input type="checkbox" id="Apartment" checked="True" > <label for="Apartment">Apartment</label>
+								</div>
+								<div class="selectDetail">
+									<input type="checkbox" id="House" checked="True" > <label for="House">House</label>
+								</div>
+								<div class="selectDetail">
+									<input type="checkbox" id="Condo"checked="True"  > <label for="Condo">Condo</label>
+								</div>
+								<div class="selectDetail">
+									<input type="checkbox" id="Townhouse" checked="True" > <label for="Townhouse">Townhouse</label>
+								</div>
+							</div>
+							<div id="lifeConvenience" class="selectContainer">
+								<div title = "Want do you want around you?" data-toggle="tooltip" class="selectHeader"><h3>Life Convenience</h3>
+									<p id="lifeConvenience-show">Food</p></div>
+								<div class="selectDetail">
+									<input type="checkbox" id="Food" checked = "True"> <label for="Food">Food</label>
+								</div>
+								<div class="selectDetail">
+									<input type="checkbox" id="Gas" > <label for="House">Gas</label>
+								</div>
+								<div class="selectDetail">
+									<input type="checkbox" id="Entertainment" > <label for="Entertainment">Entertainment</label>
+								</div>
+							</div>
+							<div id="applyDiv" >
+								<a href="#/" id="apply" >Apply</a>
+							</div>
+						</div>
+						<div id="filterTag" >
+							<img title="Filter" data-toggle="tooltip" data-placement="left" src="./images/filter.png">
+						</div>
+						<div id="map" class="map-responsive fh5co-map"></div>
+						<!-- <div id="map" class="fh5co-map"></div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="fh5co-services" data-section="services">
+		<div class="fh5co-services">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 section-heading text-center">
+						<h2 class="to-animate">Technics and Data Sources We Used</h2>
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 subtext">
+								<h3 class="to-animate"><!-- Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove. --> </h3>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="box-services">
+							<i class="icon-chemistry to-animate-2"></i>
+							<div class="fh5co-post to-animate">
+								<h3>Property Data Scraping from Zillow.com</h3>
+								<p>We used the urllib2 module from python and requested the related rental information from Zillow.com by going through all compatible zipcodes within I-285 highway. We then encoded the webpage and collected the name, coordinates, address, type and link for each property.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box-services">
+							<i class="icon-paper-plane to-animate-2"></i>
+							<div class="fh5co-post to-animate">
+								<h3>Commuting Time Collection with Google Map Distance Matrix API</h3>
+								<p>In order to obtain approximate commuting time from rental places to school, we utilized Google Map Distance Matrix API to request travel durations between two given locations. Also, we will consider three main modes of transportations which is driving, transiting and walking.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box-services">
+							<i class="icon-trophy to-animate-2"></i>
+							<div class="fh5co-post to-animate">
+								<h3>Life Convenience Evaluation with Yelp API </h3>
+								<p>Data for convenience evaluation is downloaded from Yelp API. Every estate property is chosen as a searching center. Several category data has been involved to evaluate the convenience around the searching center. Besides, every estate property will be given a yelp_grade which represent the level of convenience for this property.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-4">
+						<div class="box-services">
+							<i class="icon-energy to-animate-2"></i>
+							<div class="fh5co-post to-animate">
+								<h3>Property Data Cleaning with OpenRefine</h3>
+								<p>Since data from Zillow.com does not have an uniform return for each request. The original data we scraped had many duplicates and blank tuples. So we utilized OpenRefine to get rid of all the dirty tuples. Finally the number of rental properties result we obtained is 1098, and all those properties are located within I-285 highway in Atlanta.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box-services">
+							<i class="icon-people to-animate-2"></i>
+							<div class="fh5co-post to-animate">
+								<h3>Local Crime Data Collection</h3>
+								<p> Local crime data are downloaded from Atlanta Police Department and scraped from crimemapping.com. We use the population by zip code to normalize crime rate, and give a crime score of certain address with crime reports number divided by population within I-285 area.</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="box-services">
+							<i class="icon-screen-desktop to-animate-2"></i>
+							<div class="fh5co-post to-animate">
+								<h3>Interactive Visualization</h3>
+								<p>Introducing Google Maps JavaScript API, we build a web application enabling users easily interact with our database, by sending filters to Django and elegantly visualizing the data returned from backend with Ajax, jQuery, D3.js and so on.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+<!-- 				<div class="call-to-action text-center to-animate"><a href="#" class="btn btn-learn">Learn More</a></div>
+ -->		</div>
+		</div>
+	</section>
+
+	<section id="fh5co-team" data-section="team">
+		<div class="fh5co-team">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 section-heading text-center">
+						<h2 class="to-animate">Meet The Team</h2>
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2 subtext">
+								<h3 class="to-animate text-center">Every person on our staff is committed to providing you with the best possible customer service and the highest-quality products. </h3>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="teamMember" class="row">
+					<div class="col-md-2 col-md-offset-1">
+						<div class="team-box text-center to-animate-2">
+							<div class="user"><img class="img-reponsive" src="images/person5.jpg" alt="Jiahao Luo"></div>
+							<h3>Jiahao Luo</h3>
+							<span class="position">Product Designer, Developer</span>
+							<ul class="social-media">
+								<li><a href="https://www.facebook.com/ryan.lo.14268" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="https://twitter.com/EdwardLaw7" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="mailto:jiahao.luo2014@gmail" ><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+								<li><a href="https://www.linkedin.com/in/jiahao-luo-454806100" class="codepen"><i class="fa fa-linkedin-square" aria-hidden="true"></i></i></a></li>
+								<li><a href="https://github.com/jluo80" class="github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<div class="team-box text-center to-animate-2">
+							<div class="user"><img class="img-reponsive" src="images/person3.jpg" alt="Qi Ge"></div>
+							<h3>Qi Ge</h3>
+							<span class="position">Backend Developer</span>
+							<ul class="social-media">
+								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="mailto:intertwistlet@gmail.com" ><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="codepen"><i class="fa fa-linkedin-square" aria-hidden="true"></i></i></a></li>
+								<li><a href="#" class="github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<div class="team-box text-center to-animate-2">
+							<div class="user"><img class="img-reponsive" src="images/person2.jpg" alt="Kai Lu"></div>
+							<h3>Kai Lu</h3>
+							<span class="position">Product Designer, Developer</span>
+							<ul class="social-media">
+								<li><a href="#" class="home"><i class="fa fa-home" aria-hidden="true"></i></a></li>
+								<li><a href="mailto:lk930121@gmail.com" ><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+								<li><a href="https://www.linkedin.com/in/kai-lu-1a5275b6" class="linkedin"><i class="fa fa-linkedin-square" aria-hidden="true"></i></i></a></li>
+								<li><a href="https://github.gatech.edu/klu65" class="github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<div class="team-box text-center to-animate-2">
+							<div class="user"><img class="img-reponsive" src="images/person4.jpg" alt="Shuo Huang"></div>
+							<h3>Shuo Huang</h3>
+							<span class="position">Data Miner, Developer</span>
+							<ul class="social-media">
+								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="mailto:susannah.hwang@gmail.com" ><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="codepen"><i class="fa fa-linkedin-square" aria-hidden="true"></i></i></a></li>
+								<li><a href="#" class="github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="col-md-2">
+						<div class="team-box text-center to-animate-2">
+							<div class="user"><img class="img-reponsive" src="images/person1.jpg" alt="Chen Cheng"></div>
+							<h3>Cheng Chen</h3>
+							<span class="position">Data Miner, Developer</span>
+							<ul class="social-media">
+								<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="mailto:chencheng9232@163.com" ><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+								<li><a href="#" class="codepen"><i class="fa fa-linkedin-square" aria-hidden="true"></i></i></a></li>
+								<li><a href="#" class="github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="fh5co-faq" data-section="faq">
+		<div class="fh5co-faq">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 section-heading text-center">
+						<h2 class="to-animate">Common Questions</h2>
+						<div class="row">
+							<div class="col-md-4 col-md-offset-4 subtext">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box-faq to-animate-2">
+							<h3>What is GT rent?</h3>
+							<p>Along with the increasing student population in Georgia Tech, those students who prefer living off campus may be confronted with an accommodation puzzle. Rents, distances to school, life convenience and crime rates are several major concerns in decision making. Thus we polish and integrate the data into a web application with the data visualization and analytics skills, which aims to provide best local rental information and recommendation for Georgia Tech students.</p>
+						</div>
+						<div class="box-faq to-animate-2">
+							<h3>Why do you make this?</h3>
+							<p>This project is inspired by our painful experiences in searching for suitable accommodations. Details about these rental properties are scattered throughout several major data sources such as Google Maps, Yelp, and rental housings’ official websites, making the searching process difficult. On the other hand, some existing tools like Zillow and Trulia are unnecessarily complicated for GT students. Thus, our project aims to create an application that combines all necessary features in a more concise and dedicated way.</p>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="box-faq to-animate-2">
+							<h3>What are your innovations?</h3>
+							<p >
+								<li style="font-size: 16px">Generating crime or convenient scores of properties lack of data with kNN algorithm.</li>
+								<li style="font-size: 16px">Clustering all rental properties with K-means algorithm and providing the users with recommendation of similar properties.</li>
+								<li style="font-size: 16px">Building the web app on AWS based cloud server Heroku with runtime data management.</li>
+							</p>
+						</div></br>
+						<div class="box-faq to-animate-2">
+							<h3>Is GTRent free?</h3>
+							<p>Absolutely! Thanks to the open source spirit of the world so that we can easily gather these useful data and finished our course project. Therefore, this webapp will be 100% free. Also, We will focus on maintaining the database, updating data and answering any question from any of you in the future.</p>
+						</div>
+						<div class="box-faq to-animate-2">
+							<h3>How do I use GTRent features?</h3>
+							<p>Please see the tutorial video coming this summer...</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<hr>
+
+	<div id="fh5co-footer" role="contentinfo">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 to-animate">
+					<h3 class="section-title">About Us</h3>
+					<p> We are the five current students in Georgia Institute of Technology. We are a group of positive students aiming at providing proficient and trustworthy rental property searching service for GT students.</p>
+					<p class="copy-right">&copy; 2015 Union Free Template. <br>All Rights Reserved. <br>
+						More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a>
+					</p>
+				</div>
+
+				<div class="col-md-4 to-animate">
+					<h3 class="section-title">Our Address</h3>
+					<ul class="contact-info">
+						<li><i class="icon-map-marker"></i>North Ave NW, Atlanta, GA 30332</li>
+						<li><i class="icon-phone"></i>+ 1-678 888 8888</li>
+						<li><i class="icon-envelope"></i><a href="#">info@gtrent.com</a></li>
+						<li><i class="icon-globe2"></i><a href="#">www.gtrent.com</a></li>
+					</ul>
+					<h3 class="section-title">Connect with Us</h3>
+					<ul class="social-media">
+						<li><a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+						<li><a href="#" class="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+						<li><a href="mailto:lk930121@gmail" ><i class="fa fa-envelope-o" aria-hidden="true"></i></a></li>
+						<li><a href="https://github.gatech.edu/klu65" class="github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 to-animate">
+					<h3 class="section-title">User Investigation Survey</h3>
+					<form class="contact-form">
+<!-- 						<div class="form-group">
+							<label for="name" class="sr-only">Name</label>
+							<input type="name" class="form-control" id="name" placeholder="Name">
+						</div>
+						<div class="form-group">
+							<label for="email" class="sr-only">Email</label>
+							<input type="email" class="form-control" id="email" placeholder="Email">
+						</div>
+						<div class="form-group">
+							<label for="message" class="sr-only">Message</label>
+							<textarea class="form-control" id="message" rows="7" placeholder="Message"></textarea>
+						</div> -->
+						<p>For now our website is still in the process of perfecting. We appreciate your time and contibution if you can spend several minutes to help us improve.</p>
+						<div class="form-group">
+							<a href="https://docs.google.com/forms/d/1Wdy79g0ZW_ZPlBIYZzxvKNvYGe0YFK90TAioITtXP44/viewform" id="btn-submit" class="btn btn-send-message btn-md" role="button">Start the Survey Now！</a>
+							<!-- <input type="submit" id="btn-submit" class="btn btn-send-message btn-md" value="Send Message"> -->
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Stellar Parallax -->
+	<script src="js/jquery.stellar.min.js"></script>
+	<!-- Owl Carousel -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Google Map -->
+<!-- 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTYfIgWA-BGuC1obnERZv8rm1p-Jnx6oY&callback=initMap" async defer></script>
+	<script src="js/map.js"></script> -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTYfIgWA-BGuC1obnERZv8rm1p-Jnx6oY&libraries=places&callback=initAutocomplete" async defer></script>
+	<script src="js/initAutocomplete.js"></script>
+	<script>
+		$(document).ready(function(){
+		    $('[data-toggle="tooltip"]').tooltip();
+
+		  	var sliderTime = d3.slider()
+            .min(0).max(100).step(5)
+            .axis(true).value([0,100])
+            .on("slide",function(evt,value){
+                d3.select('#sliderMin').text(value[0]);
+                d3.select('#sliderMax').text(value[1]);
+                //getSchool(value[0],value[1]);
+            });
+
+            d3.select("#sliderTime")
+            .call(sliderTime);
+		});
+
+	</script>
+	<!-- Main JS (Do not remove) -->
+	<script src="js/main.js"></script>
+
+	</body>
+</html>

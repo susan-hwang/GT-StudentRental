@@ -1,0 +1,856 @@
+;(function () {
+	
+	'use strict';
+
+
+
+	// iPad and iPod detection	
+	var isiPad = function(){
+		return (navigator.platform.indexOf("iPad") != -1);
+	};
+
+	var isiPhone = function(){
+	    return (
+			(navigator.platform.indexOf("iPhone") != -1) || 
+			(navigator.platform.indexOf("iPod") != -1)
+	    );
+	};
+
+	// Parallax
+	var parallax = function() {
+		$(window).stellar();
+	};
+
+
+
+	// Burger Menu
+	var burgerMenu = function() {
+
+		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
+
+			event.preventDefault();
+
+			if ( $('#navbar').is(':visible') ) {
+				$(this).removeClass('active');
+			} else {
+				$(this).addClass('active');	
+			}
+
+			
+			
+		});
+
+	};
+
+
+	var testimonialCarousel = function(){
+		var owl = $('.owl-carousel-fullwidth');
+		owl.owlCarousel({
+			items: 1,
+			loop: true,
+			margin: 0,
+			responsiveClass: true,
+			nav: false,
+			dots: true,
+			smartSpeed: 500,
+			autoHeight: true
+		});
+	};
+
+	// Page Nav
+	var clickMenu = function() {
+
+		$('#navbar a:not([class="external"])').click(function(event){
+			var section = $(this).data('nav-section'),
+				navbar = $('#navbar');
+
+				if ( $('[data-section="' + section + '"]').length ) {
+			    	$('html, body').animate({
+			        	scrollTop: $('[data-section="' + section + '"]').offset().top - 55
+			    	}, 500);
+			   }
+
+		    if ( navbar.is(':visible')) {
+		    	navbar.removeClass('in');
+		    	navbar.attr('aria-expanded', 'false');
+		    	$('.js-fh5co-nav-toggle').removeClass('active');
+		    }
+
+		    event.preventDefault();
+		    return false;
+		});
+
+
+	};
+
+	// Reflect scrolling in navigation
+	var navActive = function(section) {
+
+		var $el = $('#navbar > ul');
+		$el.find('li').removeClass('active');
+		$el.each(function(){
+			$(this).find('a[data-nav-section="'+section+'"]').closest('li').addClass('active');
+		});
+
+	};
+
+	var navigationSection = function() {
+
+		var $section = $('section[data-section]');
+		
+		$section.waypoint(function(direction) {
+		  	
+		  	if (direction === 'down') {
+		    	navActive($(this.element).data('section'));
+		  	}
+		}, {
+	  		offset: '150px'
+		});
+
+		$section.waypoint(function(direction) {
+		  	if (direction === 'up') {
+		    	navActive($(this.element).data('section'));
+		  	}
+		}, {
+		  	offset: function() { return -$(this.element).height() + 155; }
+		});
+
+	};
+
+	// Window Scroll
+	var windowScroll = function() {
+		var lastScrollTop = 0;
+
+		$(window).scroll(function(event){
+
+		   	var header = $('#fh5co-header'),
+				scrlTop = $(this).scrollTop();
+
+			if ( scrlTop > 500 && scrlTop <= 2000 ) {
+				header.addClass('navbar-fixed-top fh5co-animated slideInDown');
+			} else if ( scrlTop <= 500) {
+				if ( header.hasClass('navbar-fixed-top') ) {
+					header.addClass('navbar-fixed-top fh5co-animated slideOutUp');
+					setTimeout(function(){
+						header.removeClass('navbar-fixed-top fh5co-animated slideInDown slideOutUp');
+					}, 100 );
+				}
+			} 
+			
+		});
+	};
+
+
+	// Animations
+	// Home
+	var homeAnimate = function() {
+		if ( $('#fh5co-home').length > 0 ) {	
+
+			$('#fh5co-home').waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+
+					setTimeout(function() {
+						$('#fh5co-home .to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	var exploreAnimate = function() {
+
+		var explore = $('#fh5co-explore');
+		if ( explore.length > 0 ) {	
+
+			explore.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+
+					setTimeout(function() {
+						explore.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					setTimeout(function() {
+						explore.find('.to-animate-2').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInLeft animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 700);
+
+					setTimeout(function() {
+						explore.find('.to-animate-3').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInRight animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 1000);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	var testimonyAnimate = function() {
+		var testimony = $('#fh5co-testimony');
+		if ( testimony.length > 0 ) {	
+
+			testimony.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+
+					setTimeout(function() {
+						testimony.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	var gettingStartedAnimate = function() {
+		var started = $('.getting-started-1');
+		if ( started.length > 0 ) {	
+
+			started.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+
+					setTimeout(function() {
+						started.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					setTimeout(function() {
+						started.find('.to-animate-2').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInRight animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	var gettingStarted2Animate = function() {
+		var started = $('.getting-started-2');
+		if ( started.length > 0 ) {	
+
+			started.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+
+					setTimeout(function() {
+						started.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					setTimeout(function() {
+						started.find('.to-animate-2').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInRight animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	var pricingAnimate = function() {
+		var pricing = $('#fh5co-pricing');
+		if ( pricing.length > 0 ) {	
+
+			pricing.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+
+					setTimeout(function() {
+						pricing.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeIn animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					setTimeout(function() {
+						pricing.find('.to-animate-2').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+
+	var servicesAnimate = function() {
+		var services = $('#fh5co-services');
+		if ( services.length > 0 ) {	
+
+			services.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+
+					var sec = services.find('.to-animate').length,
+						sec = parseInt((sec * 200) + 400);
+
+					setTimeout(function() {
+						services.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					setTimeout(function() {
+						services.find('.to-animate-2').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('bounceIn animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, sec);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+
+	var teamAnimate = function() {
+		var team = $('#fh5co-team');
+		if ( team.length > 0 ) {	
+
+			team.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+					var sec = team.find('.to-animate').length,
+						sec = parseInt((sec * 200) + 400);
+
+					setTimeout(function() {
+						team.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeIn animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					setTimeout(function() {
+						team.find('.to-animate-2').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, sec);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	
+	var faqAnimate = function() {
+		var faq = $('#fh5co-faq');
+		if ( faq.length > 0 ) {	
+
+			faq.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+					var sec = faq.find('.to-animate').length,
+						sec = parseInt((sec * 200) + 400);
+						
+					setTimeout(function() {
+						faq.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeIn animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					setTimeout(function() {
+						faq.find('.to-animate-2').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeInUp animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, sec);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	var trustedAnimate = function() {
+		var trusted = $('#fh5co-trusted');
+		if ( trusted.length > 0 ) {	
+
+			trusted.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+					var sec = trusted.find('.to-animate').length,
+						sec = parseInt((sec * 200) + 400);
+						
+					setTimeout(function() {
+						trusted.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeIn animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					setTimeout(function() {
+						trusted.find('.to-animate-2').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('bounceIn animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, sec);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+
+	var footerAnimate = function() {
+		var footer = $('#fh5co-footer');
+		if ( footer.length > 0 ) {	
+
+			footer.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+					setTimeout(function() {
+						footer.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeIn animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	var footerAnimate = function() {
+		var footer = $('#fh5co-footer');
+		if ( footer.length > 0 ) {	
+
+			footer.waypoint( function( direction ) {
+										
+				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
+
+					setTimeout(function() {
+						footer.find('.to-animate').each(function( k ) {
+							var el = $(this);
+							
+							setTimeout ( function () {
+								el.addClass('fadeIn animated');
+							},  k * 200, 'easeInOutExpo' );
+							
+						});
+					}, 200);
+
+					
+					$(this.element).addClass('animated');
+						
+				}
+			} , { offset: '80%' } );
+
+		}
+	};
+
+	var filterToggle = function(){
+		$("#filterTag img").click(function(){
+			//console.log("clicked!")
+			if ($(this).hasClass('clicked')){
+				$("#filter").animate({
+					width:'0px',
+					opacity: 0,
+				},800)
+				$(this).removeClass('clicked')
+
+			}
+			else{
+				$(this).addClass('clicked')
+				$("#filter").animate({
+					width:'200px',
+					opacity: 1,
+				},500)
+			}
+		})
+	}
+
+
+	var commutingStyle=function(){
+		$("#commutingWay img").click(function(){
+			if (! $(this).hasClass("choosed")){
+				$("#commutingWay").children().removeClass("choosed");
+				$(this).addClass("choosed");
+			}
+		})
+	}
+
+
+	var selectDetailToggle = function(){
+		$(".selectHeader").click(function(){
+			updateDetails();
+			console.log("clicked!")
+			if ($(this).hasClass('choosed')){
+				$(this).siblings(".selectDetail").animate({
+					height:'0px',
+					opacity: 0,
+				},800)
+
+				$(this).removeClass('choosed')
+				var label="";
+			}
+			else{
+				$('.selectHeader').filter(".choosed").siblings(".selectDetail").animate({
+					height:'0px',
+					opacity: 0,
+				},800);
+				$('.selectHeader').filter(".choosed").removeClass('choosed');
+				$(this).addClass('choosed')
+				$(this).siblings(".selectDetail").animate({
+					height:'50px',
+					opacity: 1,
+				},500);
+			}
+		})
+	}
+
+	var updateDetails = function(){
+		var commutingStyle = "Driving"; // "Driving is the first tab by default"
+		// $("#commutingWay img").click(function(){
+		// 	if (! $(this).hasClass("choosed")){
+		// 		$("#commutingWay").children().removeClass("choosed");
+		// 		$(this).addClass("choosed");
+		// 		commutingStyle = ($(this).attr("id"));
+		// 	}
+		// })
+		var commutingTime = new Array([$("#sliderMin").text(), $("#sliderMax").text()])
+		// alert(commutingTime);
+
+		$("#bed-show").text($("#bed").val())
+		$("#bath-show").text($("#bath").val())
+		var floorPlan = new Array([$("#bed").val(), $("#bath").val()])
+		// alert(floorPlan);
+
+		$("#priceMin-show").text($("#rental-payment-min").val());
+		$("#priceMax-show").text($("#rental-payment-max").val());
+		var priceRange = new Array([$("#rental-payment-min").val(), $("#rental-payment-max").val()])
+		// alert(priceRange);
+
+		var types = new Array()
+		if ($("#Apartment").is(':checked')){
+			types.push("Apartment");
+		}
+		if ($("#House").is(':checked')){
+			types.push("House");
+		}
+		if ($("#Condo").is(':checked')){
+			types.push("Condo");
+		}
+		if ($("#Townhouse").is(':checked')){
+			types.push("Townhouse");
+		}
+		$("#propertyType-show").text(types[0] + " " + types[1] + " " + types[2] + " " + types[3]);
+		var propertyType = types;
+		// alert(propertyType);
+
+		var life = new Array()
+		if ($("#Food").is(':checked')){
+			life.push("Food");
+		}
+		if ($("#Gas").is(':checked')){
+			life.push("Gas");
+		}
+		if ($("#Entertainment").is(':checked')){
+			life.push("Entertainment");
+		}
+		$('#lifeConvenience-show').text(life[0] + " " + life[1] + " " + life[2] + " " + life[3]);
+		var lifeCon = life;
+		// alert(lifeCon);
+
+		$('#apply').click(function(event) {
+			if ($('#content').hasClass('hidden2')){
+				showContent();
+				$("#filter").animate({
+					width:'0px',
+					opacity: 0,
+				},800)
+				$("#filterTag img").removeClass('clicked')
+			}
+			alert(commutingStyle)
+			console.log();
+			var maps = searchForDetail(commutingStyle,commutingTime,floorPlan,priceRange,propertyType,lifeCon);
+			addContent(maps);
+		});
+	}
+
+	var addContent = function(maps){
+
+	}
+
+	// var applyFilter = function(commutingStyle, floorPlan, priceRange, types, propertyType, lifeCon){
+	// 	$('#apply').click(function(event) {
+	// 		if ($('#content').hasClass('hidden2')){
+	// 			showContent();
+	// 			$("#filter").animate({
+	// 				width:'0px',
+	// 				opacity: 0,
+	// 			},800)
+	// 			$("#filterTag img").removeClass('clicked')
+	// 		}
+	// 		// var commutingStyle =
+	// 		var commutingTime = commutingTime
+	// 		var floorPlan =floorPlan
+	// 		// alert(floorPlan);
+	// 		var priceRange = priceRange
+	// 		// var propertyType =
+	// 		var lifeCon = life
+	// 		alert(life)
+	// 		var maps = searchForDetail(commutingStyle,commutingTime,floorPlan,priceRange,propertyType,lifeCon);
+	// 		addContent(maps);
+	// 	});
+	// }
+	var searchForDetail = function(commutingStyle,commutingTime,floorPlan,priceRange,propertyType,lifeCon){
+		console.log("create post is working!") // sanity check
+    	$.ajax({
+	        url : "gtrent", // the endpoint
+	        type : "GET", // http method
+	        data : "ID=16", // data sent with the post request
+
+	        // handle a successful response
+	        success : function(json) {
+	            //$('#post-text').val(''); // remove the value from the input
+	            //console.log(json); // log the returned json to the console
+	            console.log("success"); // another sanity check
+	        },
+
+	        // handle a non-successful response
+	        error : function(xhr,errmsg,err) {
+	            //$('#results').html("<div class='alert-box alert radius' data-alert>Oops! We have encountered an error: "+errmsg+
+	            //    " <a href='#' class='close'>&times;</a></div>"); // add the error to the dom
+	            //console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
+        }
+    });
+    	/*
+		var maps={};
+		var xhttp = new XMLHttpRequest();
+  		xhttp.onreadystatechange = function() {
+    	if (xhttp.readyState == 4 && xhttp.status == 200) {
+      		document.getElementById("content-1").innerHTML = xhttp.responseText;
+      		console.log(xhttp.responseText);
+    		}
+  		};
+	  	xhttp.open("POST", "", true);
+	 	xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	  	xhttp.send("id=1");
+
+		return maps
+		*/
+	}
+	var hideContent=function(){
+
+		$("#content").animate({
+			height:'20px',
+			opacity: 1,
+		},500)
+		$('#content').addClass('hidden2');
+	}
+
+	var showContent = function(){
+		$("#content").animate({
+					height:'500px',
+					width:"300px",
+					opacity: 1,
+				},800)
+		$("#content").removeClass('hidden2')
+	}
+
+	// Document on load.
+	$(function(){
+
+		parallax();
+		burgerMenu();
+		clickMenu();
+		windowScroll();
+		navigationSection();
+		testimonialCarousel();
+
+		filterToggle();
+		commutingStyle();
+		selectDetailToggle();
+		updateDetails();
+		// applyFilter();
+		//resumeContent();
+		$("#hideContent").click(function(){
+			if (! $("#content").hasClass('hidden2')){
+				hideContent()
+			}
+			else{
+				showContent();
+			}
+		});
+		// Animations
+		homeAnimate();
+		exploreAnimate();
+		testimonyAnimate();
+		gettingStartedAnimate();
+		gettingStarted2Animate();
+		pricingAnimate();
+		servicesAnimate();
+		teamAnimate();
+		faqAnimate();
+		trustedAnimate();
+		footerAnimate();
+
+		
+
+	});
+
+
+}());
